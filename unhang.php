@@ -1,29 +1,29 @@
 <?php
+
 /**
-* Kirby Unhang 0.1.0
+* Kirby Unhang 0.2.0
 * by Mateusz Ciszczoń <contact@mciszczon.pl>
 * https://github.com/mciszczon/kirby-unhang
 * License: MIT
 *
-* TODO: Extend replacing function
-* TODO: Allow passing arguments for different languages
+* TODO: Extend replacing function for Polish
 **/
 
-/**
-* Replace all occurences of hanging conjugators like ` w `
-* with ` w&nbsp`.
-**/
-function unhang($text){
-  return preg_replace('/ ([A-z]{1}) /', " $1&nbsp;", $text);
-}
+// Load Replacer class
+require_once dirname(__FILE__).'/sources/Replacer.php';
 
 /**
-* Custom field method for applying unhang() function.
+* Custom field method for applying replace() method.
 * It's meant to be chained, so use like this:
 * $page->aFieldWithText()->unhang()->kirbytext()
 **/
-field::$methods['unhang'] = function($field) {
-  $field->value = unhang($field->value());
+field::$methods['unhang'] = function($field, $language = null) {
+  // Create Replacer instance
+  $replacer = new Replacer();
+  // If $language is not given, default to site's language
+  if (!isset($language)) $language = kirby()->site()->language()->code();
+  // Use Replacer replace() method
+  $field->value = $replacer->replace($field->value(), $language);
 
   return $field;
 };

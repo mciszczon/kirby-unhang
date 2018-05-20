@@ -2,7 +2,7 @@
   "name": "unhang",
   "description": "Remove hanging connectives from a text",
   "author": "Mateusz Ciszczoń <contact@mciszczon.pl>",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "kirby-plugin",
   "license": "MIT"
 }

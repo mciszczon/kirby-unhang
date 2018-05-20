@@ -1,4 +1,4 @@
-# Kirby Unhang
+# Kirby Unhang 0.2.0
 Kirby Unhang is a field method for Kirby CMS that allows you to remove hanging connectives from a text.
 
 ## Installation
@@ -27,22 +27,18 @@ It can be used in conjuction with any other field method, but it mostly makes se
 
 ```php
 <?php echo $page->text()->unhang()->kirbytext() ?>
-
-// you can also turn this thing around and it'll work
-<?php echo $page->text()->kirbytext()->unhang() ?>
 ```
 
-**You can also turn this thing around and it'll work:**
+By default, plugin will apply replacing rules for your site's language if such are available. Otherwise it'll fallback to `'en'`.
+You can also specify a language different from your site language by passing an argument: `unhang('pl')`.
 
-```php
-<?php echo $page->text()->kirbytext()->unhang() ?>
-```
+
 ## TODO
 
 Here's a list of planned features:
 
-- [ ] Extend replacing function
-- [ ] Allow passing arguments for different languages
+- [ ] Extend replacing function for Polish
+- [x] Allow passing arguments for different languages
 
 ## Changelog
 
